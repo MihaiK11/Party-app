@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const eventRoutes = require('./routes/eventRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,6 +22,7 @@ mongoose.connect(process.env.DB_URI, {
 });
 
 app.use('/events', eventRoutes);
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello from Backend');
